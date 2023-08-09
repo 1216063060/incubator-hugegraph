@@ -24,10 +24,6 @@
         <groupId>org.apache.hugegraph</groupId>
         <version>${revision}</version>
         <relativePath>../pom.xml</relativePath>
-        <groupId>org.apache.hugegraph</groupId>
-        <artifactId>hugegraph-pd</artifactId>
-        <version>${revision}</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
