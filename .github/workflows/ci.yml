@@ -52,7 +52,11 @@ jobs:
 
       - name: cat mvn
         run: |
-          cat /usr/bin/mvn/conf/settings.xml
+          cd /usr/bin/mvn/
+
+      - name: ll
+        run: |
+          ll
 
       - name: Compile
         run: |
