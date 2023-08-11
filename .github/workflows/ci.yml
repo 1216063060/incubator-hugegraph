@@ -54,9 +54,9 @@ jobs:
         run: |
           cat /usr/bin/mvn
 
-      - name: echo ${MAVEN_HOME}
+      - name: echo "$HOME/.m2/settings.xml"
         run: |
-          echo ${MAVEN_HOME}
+          echo "$HOME/.m2/settings.xml"
 
       - name: Compile
         run: |
