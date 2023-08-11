@@ -46,14 +46,6 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: mvn local path
-        run: |
-          which mvn
-
-      - name: cat mvn
-        run: |
-          cat /usr/bin/mvn
-
       - name: cat /home/runner/.m2/settings.xml
         run: |
           cat /home/runner/.m2/settings.xml
@@ -61,6 +53,7 @@ jobs:
       - name: remove setting.xml
         run: |
           rm -f $HOME/.m2/settings.xml
+
       - name: Add setting.xml
         run: |
           echo '<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
@@ -72,6 +65,7 @@ jobs:
               <username>${env.GITHUB_ACTOR}</username>
               <password>${env.GITHUB_TOKEN}</password>
             </server>
+            </servers>
             <profiles>
             <profile>
               <id>local-repo</id>
