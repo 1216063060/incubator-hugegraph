@@ -52,7 +52,7 @@ jobs:
 
       - name: cat mvn
         run: |
-          cd /usr/bin/mvn
+          cat /usr/bin/mvn
 
       - name: ll
         run: |
