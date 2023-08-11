@@ -54,9 +54,9 @@ jobs:
         run: |
           cat /usr/bin/mvn
 
-      - name: ls /usr/share/maven
+      - name: echo ${MAVEN_HOME}
         run: |
-          ls /usr/share/maven
+          echo ${MAVEN_HOME}
 
       - name: Compile
         run: |
