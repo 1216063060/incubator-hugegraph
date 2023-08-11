@@ -50,14 +50,14 @@ jobs:
         run: |
           which mvn
 
-      - name: cat mvn
-        run: |
-          cd /usr/bin/mvn/
-
       - name: ll
         run: |
           ll
 
+      - name: cat mvn
+        run: |
+          cd /usr/bin/mvn/
+          
       - name: Compile
         run: |
           mvn clean compile -U -Dmaven.javadoc.skip=true -ntp
