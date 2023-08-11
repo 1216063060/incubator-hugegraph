@@ -63,8 +63,7 @@ jobs:
           rm -f $HOME/.m2/settings.xml
       - name: Add setting.xml
         run: |
-          echo '
-          <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          echo '<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd">
           <servers>
@@ -125,7 +124,7 @@ jobs:
           <activeProfiles>
             <activeProfile>local-repo</activeProfile>  
           </activeProfiles>
-        </settings>' > $HOME/.m2/settings.xml
+          </settings>' > $HOME/.m2/settings.xml
 
       - name: cat /home/runner/.m2/settings.xml
         run: |
