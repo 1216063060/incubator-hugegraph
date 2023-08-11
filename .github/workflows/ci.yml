@@ -54,9 +54,9 @@ jobs:
         run: |
           cat /usr/bin/mvn
 
-      - name: ll
+      - name: ls /usr/share/maven
         run: |
-          ll
+          ls /usr/share/maven
 
       - name: Compile
         run: |
