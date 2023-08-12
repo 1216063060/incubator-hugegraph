@@ -15,7 +15,7 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 #
-BASE_DIR="hugegraph-test/src/main/resources"
+BASE_DIR="hugegraph-server/hugegraph-test/src/main/resources"
 ORIGIN_CONF="$BASE_DIR/hugegraph.properties"
 
 STATUS=0
