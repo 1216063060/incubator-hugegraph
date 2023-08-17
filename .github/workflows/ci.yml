@@ -28,6 +28,9 @@ jobs:
         JAVA_VERSION: [ '8', '11' ]
 
     steps:
+      - name: cat setting.xml
+        run: |
+          cat $HOME/.m2/settings.xml
       - name: remove setting.xml
         run: |
           rm -f $HOME/.m2/settings.xml
