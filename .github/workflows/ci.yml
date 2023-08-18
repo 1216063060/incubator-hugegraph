@@ -154,7 +154,7 @@ jobs:
           </settings>' > ./settings.xml
       - name: set settings
         run: |
-          mvn -gs ./settings.xml install
+          mvn -gs ./settings.xml
       - name: Compile
         run: |
           mvn clean compile -U -Dmaven.javadoc.skip=true -ntp
