@@ -28,12 +28,29 @@ jobs:
         JAVA_VERSION: [ '8', '11' ]
 
     steps:
+      - name: Install JDK ${{ matrix.JAVA_VERSION }}
+        uses: actions/setup-java@v3
+        with:
+          java-version: ${{ matrix.JAVA_VERSION }}
+          distribution: 'zulu'
+
+      - name: Cache Maven packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
       - name: create tmp-seetting
         run: |
           touch ./settings.xml
-      - name: ll
+      - name: ls
         run: |
-          ll
+          ls
       - name: create temp_mvn_repo
         run: |
           mkdir temp_mvn_repo
@@ -42,17 +59,17 @@ jobs:
           echo '<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
-        
+
           <localRepository>./temp_mvn_repo</localRepository>
-        
+
           <pluginGroups>
             <pluginGroup>org.apache.tomcat.maven</pluginGroup>
             <pluginGroup>org.jacoco</pluginGroup>
           </pluginGroups>
-        
+
           <mirrors>
           </mirrors>
-        
+
           <profiles>
             <profile>
               <id>local-repo</id>
@@ -79,7 +96,7 @@ jobs:
                 </repository>
               </repositories>
             </profile>
-        
+
             <profile>
               <id>staged-releases</id>
               <repositories>
@@ -96,32 +113,14 @@ jobs:
               </pluginRepositories>
             </profile>
           </profiles>
-        
+
           <activeProfiles>
             <activeProfile>local-repo</activeProfile>
           </activeProfiles>
             </settings>' > ./settings.xml
       - name: set settings
         run: |
-          mvn -gs ./settings.xml install
-      - name: Install JDK ${{ matrix.JAVA_VERSION }}
-        uses: actions/setup-java@v3
-        with:
-          java-version: ${{ matrix.JAVA_VERSION }}
-          distribution: 'zulu'
-
-      - name: Cache Maven packages
-        uses: actions/cache@v3
-        with:
-          path: ~/.m2
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-m2
-
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 2
-
+          mvn -s ./settings.xml
       - name: Compile
         run: |
           mvn clean compile -U -Dmaven.javadoc.skip=true -ntp
