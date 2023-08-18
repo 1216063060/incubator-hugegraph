@@ -28,12 +28,12 @@ jobs:
         JAVA_VERSION: [ '8', '11' ]
 
     steps:
-      - name: ls
-        run: |
-          ls
       - name: create tmp-seetting
         run: |
           touch ./settings.xml
+      - name: ll
+        run: |
+          ll
       - name: create temp_mvn_repo
         run: |
           mkdir temp_mvn_repo
@@ -103,7 +103,7 @@ jobs:
             </settings>' > ./settings.xml
       - name: set settings
         run: |
-          mvn -gs ./settings.xml clean install
+          mvn -gs ./settings.xml install
       - name: Install JDK ${{ matrix.JAVA_VERSION }}
         uses: actions/setup-java@v3
         with:
