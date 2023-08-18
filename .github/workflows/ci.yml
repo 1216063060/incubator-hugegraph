@@ -100,7 +100,7 @@ jobs:
             </settings>' > ./settings.xml
       - name: set settings
         run: |
-          mvn -gs ./settings.xml
+          mvn -gs ./settings.xml clean install
       - name: Install JDK ${{ matrix.JAVA_VERSION }}
         uses: actions/setup-java@v3
         with:
