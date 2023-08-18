@@ -48,9 +48,9 @@ jobs:
       - name: create tmp-seetting
         run: |
           touch ./settings.xml
-      - name: ls
+      - name: ls $HOME/.m2/
         run: |
-          ls
+          ls $HOME/.m2/
       - name: create temp_mvn_repo
         run: |
           mkdir temp_mvn_repo
