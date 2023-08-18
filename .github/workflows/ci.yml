@@ -28,13 +28,13 @@ jobs:
         JAVA_VERSION: [ '8', '11' ]
 
     steps:
-      - name: create tmp-seetting.xml
+      - name: create tmp-seetting
         run: |
-          touch ./setting.xml
+          touch ./settings.xml
       - name: create temp_mvn_repo
         run: |
           mkdir temp_mvn_repo
-      - name: echo setting.xml
+      - name: echo settings.xml
         run: |
           echo '<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -56,7 +56,7 @@ jobs:
               <repositories>
                 <repository>
                   <id>local-first</id>
-                  <url>file:./temp_mvn_repo</url>
+                  <url>file://${user.home}/.m2/repository</url>
                   <releases>
                     <enabled>true</enabled>
                   </releases>
@@ -92,54 +92,15 @@ jobs:
                 </pluginRepository>
               </pluginRepositories>
             </profile>
-        
-            <profile>
-              <id>local-repo</id>
-              <properties>
-                <os.detected.classifier>osx-x86_64</os.detected.classifier>
-              </properties>
-              <repositories>
-                <repository>
-                  <id>local-first</id>
-                  <url>${user.home}/.m2/repository</url>
-                  <releases>
-                    <enabled>true</enabled>
-                  </releases>
-                  <snapshots>
-                    <enabled>true</enabled>
-                  </snapshots>
-                </repository>
-                <repository>
-                  <id>central</id>
-                  <url>https://repo.maven.apache.org/maven2</url>
-                  <releases>
-                    <enabled>true</enabled>
-                  </releases>
-                  <snapshots>
-                    <enabled>false</enabled>
-                  </snapshots>
-                </repository>
-                <repository>
-                  <id>staged-releases</id>
-                  <url>https://repository.apache.org/content/groups/staging/</url>
-                </repository>
-              </repositories>
-              <pluginRepositories>
-                <pluginRepository>
-                  <id>staged-releases</id>
-                  <url>https://repository.apache.org/content/groups/staging/</url>
-                </pluginRepository>
-              </pluginRepositories>
-            </profile>
           </profiles>
         
           <activeProfiles>
             <activeProfile>local-repo</activeProfile>
           </activeProfiles>
-            </settings>' > ./setting.xml
-      - name: set setting.xml
+            </settings>' > ./settings.xml
+      - name: set settings
         run: |
-          mvn -s ./setting.xml
+          mvn -s ./settings.xml
       - name: Install JDK ${{ matrix.JAVA_VERSION }}
         uses: actions/setup-java@v3
         with:
