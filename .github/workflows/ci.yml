@@ -45,15 +45,12 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 2
-      - name: create tmp-seetting
+      - name: remove seettings
         run: |
-          touch ./settings.xml
-      - name: ls $HOME/.m2/
+          remove $HOME/.m2/settings.xml
+      - name: create settings
         run: |
-          ls $HOME/.m2/
-      - name: create temp_mvn_repo
-        run: |
-          mkdir temp_mvn_repo
+          touch $HOME/.m2/settings.xml
       - name: echo settings.xml
         run: |
           echo '<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
@@ -151,10 +148,10 @@ jobs:
           <activeProfiles>
             <activeProfile>local-repo</activeProfile>  
           </activeProfiles>
-          </settings>' > ./settings.xml
+          </settings>' > $HOME/.m2/settings.xml
       - name: Compile
         run: |
-          mvn -gs ./settings.xml clean compile -U -Dmaven.javadoc.skip=true -ntp
+          clean compile -U -Dmaven.javadoc.skip=true -ntp
 
       - name: Install JDK 8
         uses: actions/setup-java@v3
