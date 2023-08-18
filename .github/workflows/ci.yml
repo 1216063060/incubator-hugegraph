@@ -28,6 +28,9 @@ jobs:
         JAVA_VERSION: [ '8', '11' ]
 
     steps:
+      - name: ls
+        run: |
+          ls
       - name: create tmp-seetting
         run: |
           touch ./settings.xml
