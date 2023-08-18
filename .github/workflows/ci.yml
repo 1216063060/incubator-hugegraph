@@ -151,7 +151,7 @@ jobs:
           </settings>' > $HOME/.m2/settings.xml
       - name: Compile
         run: |
-          clean compile -U -Dmaven.javadoc.skip=true -ntp
+          mvn clean compile -U -Dmaven.javadoc.skip=true -ntp
 
       - name: Install JDK 8
         uses: actions/setup-java@v3
