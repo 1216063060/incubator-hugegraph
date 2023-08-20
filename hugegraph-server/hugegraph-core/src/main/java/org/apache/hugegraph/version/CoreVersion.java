@@ -29,6 +29,7 @@ public class CoreVersion {
 
     public static final String NAME = "hugegraph-core";
 
+    
     public static final String DEFAULT_VERSION = "1.5.0";
 
     // The second parameter of Version.of() is for IDE running without JAR
