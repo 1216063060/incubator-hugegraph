@@ -46,6 +46,10 @@ jobs:
         with:
           fetch-depth: 2
 
+      - name: cat settings profile
+        run: |
+           cat $HOME/.m2/settings.xml 
+
       - name: Compile
         run: |
           mvn clean compile -U -Dmaven.javadoc.skip=true -ntp
