@@ -48,7 +48,15 @@ jobs:
 
       - name: cat settings profile
         run: |
-           cat $HOME/.m2/settings.xml 
+           cat $HOME/.m2/settings.xml
+
+      - name: Modify settings.xml
+        run: |
+          sed -i 's/<\/settings>/<mirrors><mirror><id>apache-stage<\/id><name>Apache Stage Repository<\/name><url>https:\/\/repository.apache.org\/content\/repositories\/staging\/<\/url><mirrorOf>central<\/mirrorOf><\/mirror><\/mirrors><\/settings>/' $HOME/.m2/settings.xml
+
+      - name: cat settings profile
+        run: |
+          cat $HOME/.m2/settings.xml
 
       - name: Compile
         run: |
