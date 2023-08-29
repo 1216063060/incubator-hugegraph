@@ -39,6 +39,10 @@ jobs:
         run: |
           cp $HOME/.m2/settings.xml /tmp/settings.xml
 
+      - name: 111
+        run: |
+          echo $HOME
+
       - name: Modify maven settings
         if: ${{ env.USE_STAGE == 'true' }}
         run: |
@@ -58,6 +62,7 @@ jobs:
       - name: cat settings profile
         run: |
           cat $HOME/.m2/settings.xml
+
       - name: Checkout
         uses: actions/checkout@v3
         with:
