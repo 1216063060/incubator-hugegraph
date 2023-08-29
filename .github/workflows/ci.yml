@@ -41,7 +41,7 @@ jobs:
 
       - name: 111
         run: |
-          ll $HOME/.m2/
+          ls $HOME/.m2/
 
       - name: Modify maven settings
         if: ${{ env.USE_STAGE == 'true' }}
