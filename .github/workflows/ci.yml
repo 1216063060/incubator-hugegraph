@@ -52,8 +52,8 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ~/.m2
-          key: ${{ runner.os }}-m2-${{ hashFiles('~/.m2/settings.xml') }}-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('$HOME/.m2/settings.xml') }}-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2-${{ hashFiles('$HOME/.m2/settings.xml') }}
       - name: cat settings profile
         run: |
           cat $HOME/.m2/settings.xml
