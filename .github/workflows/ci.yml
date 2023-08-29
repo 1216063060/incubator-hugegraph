@@ -39,10 +39,6 @@ jobs:
         run: |
           cp $HOME/.m2/settings.xml /tmp/settings.xml
 
-      - name: 111
-        run: |
-          ls $HOME/.m2/
-
       - name: Modify maven settings
         if: ${{ env.USE_STAGE == 'true' }}
         run: |
@@ -55,24 +51,16 @@ jobs:
       - name: Cache Maven packages
         uses: actions/cache@v3
         with:
-          path: |
+          path:
+            ~/.m2
             !~/.m2/settings.xml
-            ~/.m2/
-          key: ${{ runner.os }}-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}
-
-      - name: cat settings profile
-        run: |
-          cat $HOME/.m2/settings.xml
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
 
       - name: Checkout
         uses: actions/checkout@v3
         with:
           fetch-depth: 2
-
-      - name: cat settings profile
-        run: |
-          cat $HOME/.m2/settings.xml
 
       - name: Compile
         run: |
