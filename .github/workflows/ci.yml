@@ -81,7 +81,7 @@ jobs:
 
       - name: Compile
         run: |
-          mvn clean compile -U -Dmaven.javadoc.skip=true -ntp
+          mvn clean compile -U -Dmaven.javadoc.skip=true -ntp -P stage
 
       - name: Install JDK 8
         uses: actions/setup-java@v3
