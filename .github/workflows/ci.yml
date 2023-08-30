@@ -41,8 +41,7 @@ jobs:
         run: |
           pwd
           cp  $HOME/.m2/settings.xml /tmp/settings.xml
-          ls ./
-          mv -f ./.github/configs/settings.xml $HOME/.m2/settings.xml
+          mv -f .github/configs/settings.xml $HOME/.m2/settings.xml
 
       - name: cat settings profile
         run: |
