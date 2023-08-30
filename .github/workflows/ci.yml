@@ -75,6 +75,10 @@ jobs:
           cp  $HOME/.m2/settings.xml /tmp/settings.xml
           mv -f .github/configs/settings.xml $HOME/.m2/settings.xml
 
+      - name: cat settings profile
+        run: |
+          cat $HOME/.m2/settings.xml
+
       - name: Compile
         run: |
           mvn clean compile -U -Dmaven.javadoc.skip=true -ntp
