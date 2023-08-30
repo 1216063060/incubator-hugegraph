@@ -37,7 +37,7 @@ jobs:
 
       - name: ls
         run: |
-          ls /home/runner/work/incubator-hugegraph/incubator-hugegraph
+          ls /home/runner/work/incubator-hugegraph
 
       - name: copy and overwrite maven settings
         if: ${{ env.USE_STAGE == 'true' }}
