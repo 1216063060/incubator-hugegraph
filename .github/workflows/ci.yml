@@ -35,9 +35,11 @@ jobs:
           java-version: ${{ matrix.JAVA_VERSION }}
           distribution: 'zulu'
 
-      - name: ls
+
+      - name: ls echo
         run: |
           ls -a /home/runner/work/incubator-hugegraph/incubator-hugegraph
+          echo $GITHUB_WORKSPACE
 
       - name: cat settings profile
         run: |
