@@ -35,6 +35,9 @@ jobs:
           java-version: ${{ matrix.JAVA_VERSION }}
           distribution: 'zulu'
 
+      - name: ls
+        run: |
+          ls /home/runner/work/incubator-hugegraph/incubator-hugegraph
 
 #
 #      - name: copy and overwrite maven settings
@@ -56,6 +59,10 @@ jobs:
             !~/.m2/settings.xml
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
+
+      - name: ls
+        run: |
+          ls /home/runner/work/incubator-hugegraph/incubator-hugegraph
 
       - name: Checkout
         uses: actions/checkout@v3
