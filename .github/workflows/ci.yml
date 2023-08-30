@@ -40,8 +40,11 @@ jobs:
         if: ${{ env.USE_STAGE == 'true' }}
         run: |
           pwd
+          ls
+          ls
+          ls
           cp  $HOME/.m2/settings.xml /tmp/settings.xml
-          mv -f .github/configs/settings.xml $HOME/.m2/settings.xml
+          mv -f ./.github/configs/settings.xml $HOME/.m2/settings.xml
 
       - name: cat settings profile
         run: |
