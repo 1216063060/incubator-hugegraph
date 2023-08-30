@@ -37,15 +37,7 @@ jobs:
 
       - name: ls
         run: |
-          ls /home/runner/work/incubator-hugegraph/incubator-hugegraph
-
-#
-#      - name: copy and overwrite maven settings
-#        if: ${{ env.USE_STAGE == 'true' }}
-#        run: |
-#          pwd
-#          cp  $HOME/.m2/settings.xml /tmp/settings.xml
-#          mv -f ./.github/configs/settings.xml $HOME/.m2/settings.xml
+          ls -a /home/runner/work/incubator-hugegraph/incubator-hugegraph
 
       - name: cat settings profile
         run: |
@@ -62,7 +54,7 @@ jobs:
 
       - name: ls
         run: |
-          ls /home/runner/work/incubator-hugegraph/incubator-hugegraph
+          ls -a /home/runner/work/incubator-hugegraph/incubator-hugegraph
 
       - name: Checkout
         uses: actions/checkout@v3
@@ -71,7 +63,17 @@ jobs:
 
       - name: ls
         run: |
-          ls /home/runner/work/incubator-hugegraph/incubator-hugegraph
+          ls -a /home/runner/work/incubator-hugegraph/incubator-hugegraph
+
+      - name: ls
+        run: |
+          ls -a 
+
+      - name: copy and overwrite maven settings
+        if: ${{ env.USE_STAGE == 'true' }}
+        run: |
+          cp  $HOME/.m2/settings.xml /tmp/settings.xml
+          mv -f .github/configs/settings.xml $HOME/.m2/settings.xml
 
       - name: Compile
         run: |
