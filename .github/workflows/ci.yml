@@ -49,7 +49,7 @@ jobs:
         if: ${{ env.USE_STAGE == 'true' }}
         run: |
           cp  $HOME/.m2/settings.xml /tmp/settings.xml
-          sed -i 's/<\/settings>/<profiles><profile><id>local-repo<\/id><repositories><repository><id>central<\/id><url>https:\/\/repo.maven.apache.org\/maven2<\/url><releases><enabled>true<\/enabled><\/releases><snapshots><enabled>false<\/enabled><\/snapshots><\/repository><repository><id>staged-releases<\/id><url>https:\/\/repository.apache.org\/content\/groups\/staging\/<\/url><\/repository><\/repositories><pluginRepositories><pluginRepository><id>staged-releases<\/id><url>https:\/\/repository.apache.org\/content\/groups\/staging\/<\/url><\/pluginRepository><\/pluginRepositories><\/profile><\/profiles><activeProfiles><activeProfile>local-repo<\/activeProfile><\/activeProfiles><\/settings>/' $HOME/.m2/settings.xml
+#          sed -i 's/<\/settings>/<profiles><profile><id>local-repo<\/id><repositories><repository><id>central<\/id><url>https:\/\/repo.maven.apache.org\/maven2<\/url><releases><enabled>true<\/enabled><\/releases><snapshots><enabled>false<\/enabled><\/snapshots><\/repository><repository><id>staged-releases<\/id><url>https:\/\/repository.apache.org\/content\/groups\/staging\/<\/url><\/repository><\/repositories><pluginRepositories><pluginRepository><id>staged-releases<\/id><url>https:\/\/repository.apache.org\/content\/groups\/staging\/<\/url><\/pluginRepository><\/pluginRepositories><\/profile><\/profiles><activeProfiles><activeProfile>local-repo<\/activeProfile><\/activeProfiles><\/settings>/' $HOME/.m2/settings.xml
 
       - name: cat settings profile
         run: |
@@ -61,7 +61,7 @@ jobs:
           path:
             ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}-${{ hashFiles('~/.m2/settings.xml') }}
-          restore-keys: ${{ runner.os }}-m2
+          restore-keys: ${{ runner.os }}-m2-${{ hashFiles('~/.m2/settings.xml') }}
 
 
       - name: cat settings profile
