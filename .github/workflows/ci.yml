@@ -63,6 +63,7 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}-${{ hashFiles('~/.m2/settings.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
+
       - name: cat settings profile
         run: |
           cat $HOME/.m2/settings.xml
