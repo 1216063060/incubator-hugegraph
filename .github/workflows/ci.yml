@@ -45,18 +45,27 @@ jobs:
         run: |
           cat $HOME/.m2/settings.xml
 
+      - name: copy and overwrite maven settings
+        if: ${{ env.USE_STAGE == 'true' }}
+        run: |
+          cp  $HOME/.m2/settings.xml /tmp/settings.xml
+          mv -f .github/configs/settings.xml $HOME/.m2/settings.xml    
+
+      - name: cat settings profile
+        run: |
+          cat $HOME/.m2/settings.xml
+
       - name: Cache Maven packages
         uses: actions/cache@v3
         with:
           path:
             ~/.m2
-            !~/.m2/settings.xml
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}-${{ hashFiles('~/.m2/settings.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
-      - name: ls
+      - name: cat settings profile
         run: |
-          ls -a /home/runner/work/incubator-hugegraph/incubator-hugegraph
+          cat $HOME/.m2/settings.xml
 
       - name: Checkout
         uses: actions/checkout@v3
@@ -71,11 +80,11 @@ jobs:
         run: |
           ls -a 
 
-      - name: copy and overwrite maven settings
-        if: ${{ env.USE_STAGE == 'true' }}
-        run: |
-          cp  $HOME/.m2/settings.xml /tmp/settings.xml
-          mv -f .github/configs/settings.xml $HOME/.m2/settings.xml
+#      - name: copy and overwrite maven settings
+#        if: ${{ env.USE_STAGE == 'true' }}
+#        run: |
+#          cp  $HOME/.m2/settings.xml /tmp/settings.xml
+#          mv -f .github/configs/settings.xml $HOME/.m2/settings.xml
 
       - name: cat settings profile
         run: |
