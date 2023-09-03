@@ -53,7 +53,13 @@ jobs:
           cp  $HOME/.m2/settings.xml /tmp/settings.xml
           mv -f .github/configs/settings.xml $HOME/.m2/settings.xml
 
-      - name: Compile
+      - name: Compile1
+        if: ${{ matrix.JAVA_VERSION == '8'}}
+        run: |
+          mvn clean compile -U -Dmaven.javadoc.skip=true -ntp -pl hugegraph-pd
+
+      - name: Compile2
+        if: ${{ matrix.JAVA_VERSION != '8'}}
         run: |
           mvn clean compile -U -Dmaven.javadoc.skip=true -ntp
 
