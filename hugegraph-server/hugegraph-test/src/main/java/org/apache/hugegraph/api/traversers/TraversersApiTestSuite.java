@@ -43,8 +43,7 @@ import org.junit.runners.Suite;
     TemplatePathsApiTest.class,
     WeightedShortestPathApiTest.class,
     AdamicAdarAPITest.class,
-//TODO: Tests that need fixing before release
-//    ResourceAllocationAPITest.class
+    ResourceAllocationAPITest.class
 })
 public class TraversersApiTestSuite {
 }
