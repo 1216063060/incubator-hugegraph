@@ -25,7 +25,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-//        MainTest.class
+        MainTest.class
 })
 
 @Slf4j
