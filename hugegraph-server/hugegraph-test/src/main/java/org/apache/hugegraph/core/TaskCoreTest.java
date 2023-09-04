@@ -552,6 +552,7 @@ public class TaskCoreTest extends BaseCoreTest {
         scheduler.cancel(task);
 
         task = scheduler.task(task.id());
+        //TaskCoreTest.testGremlinJobAndCancel:555 expected:<CANCELLING> but was:<RUNNING>
         Assert.assertEquals(TaskStatus.CANCELLING, task.status());
 
         task = scheduler.waitUntilTaskCompleted(task.id(), 10);
