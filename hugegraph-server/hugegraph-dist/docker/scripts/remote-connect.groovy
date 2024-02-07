@@ -15,5 +15,5 @@
  * under the License.
  */
 
-:remote connect tinkerpop.server conf/remote.yaml
-:> hugegraph
+: remote connect tinkerpop . server conf / remote.yaml
+: > hugegraph

@@ -23,14 +23,13 @@ import java.util.TreeSet;
 
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.io.FileUtils;
-import org.apache.hugegraph.dist.RegisterUtil;
-import org.slf4j.Logger;
-
 import org.apache.hugegraph.config.HugeConfig;
 import org.apache.hugegraph.config.OptionSpace;
 import org.apache.hugegraph.config.TypedOption;
+import org.apache.hugegraph.dist.RegisterUtil;
 import org.apache.hugegraph.util.E;
 import org.apache.hugegraph.util.Log;
+import org.slf4j.Logger;
 
 public class ConfDumper {
 
@@ -39,7 +38,7 @@ public class ConfDumper {
     private static final Logger LOG = Log.logger(ConfDumper.class);
 
     public static void main(String[] args)
-                       throws ConfigurationException, IOException {
+            throws ConfigurationException, IOException {
         E.checkArgument(args.length == 1,
                         "ConfDumper need a config file.");
 
@@ -62,11 +61,10 @@ public class ConfDumper {
 
     private static void writeOption(File output, TypedOption<?, ?> option,
                                     Object value) throws IOException {
-        StringBuilder sb = new StringBuilder();
-        sb.append("# ").append(option.desc()).append(EOL);
-        sb.append(option.name()).append("=").append(value).append(EOL);
-        sb.append(EOL);
+        String sb = "# " + option.desc() + EOL +
+                    option.name() + "=" + value + EOL +
+                    EOL;
         // Write to output file
-        FileUtils.write(output, sb.toString(), true);
+        FileUtils.write(output, sb, true);
     }
 }
