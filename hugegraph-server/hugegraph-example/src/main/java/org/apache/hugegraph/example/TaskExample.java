@@ -20,8 +20,6 @@ package org.apache.hugegraph.example;
 import java.util.Iterator;
 
 import org.apache.commons.collections.IteratorUtils;
-import org.slf4j.Logger;
-
 import org.apache.hugegraph.HugeFactory;
 import org.apache.hugegraph.HugeGraph;
 import org.apache.hugegraph.backend.id.Id;
@@ -32,6 +30,7 @@ import org.apache.hugegraph.task.TaskScheduler;
 import org.apache.hugegraph.task.TaskStatus;
 import org.apache.hugegraph.testutil.Whitebox;
 import org.apache.hugegraph.util.Log;
+import org.slf4j.Logger;
 
 public class TaskExample {
 
@@ -64,7 +63,7 @@ public class TaskExample {
 
         Thread.sleep(TestTask.UNIT * 33);
         task.cancel(true);
-        Thread.sleep(TestTask.UNIT * 1);
+        Thread.sleep(TestTask.UNIT);
         scheduler.save(task);
 
         // Find task not finished(actually it should be RUNNING)
