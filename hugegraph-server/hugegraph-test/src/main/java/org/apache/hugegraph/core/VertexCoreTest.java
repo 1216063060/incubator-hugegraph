@@ -4409,8 +4409,8 @@ public class VertexCoreTest extends BaseCoreTest {
 
         vertices = g.V()
                     .hasLabel("person")
-                    .union(__.has("birth", P.lt(dates[1])),
-                           __.has("birth", P.gt(dates[3])))
+                    .union(__.<Vertex>has("birth", P.lt(dates[1])),
+                           __.<Vertex>has("birth", P.gt(dates[3])))
                     .toList();
         Assert.assertEquals(2, vertices.size());
     }
